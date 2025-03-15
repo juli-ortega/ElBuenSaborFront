@@ -1,6 +1,16 @@
-import "../styles/globals.css";
+"use client";
+
+import "../../../styles/globals.css";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook, FaMicrosoft } from "react-icons/fa6";
+import { useState } from "react";
+import { AiOutlineEye, AiFillEye } from "react-icons/ai";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <section className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
@@ -31,12 +41,22 @@ export default function Login() {
             >
               Contraseña
             </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Ingresa tu contraseña"
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="Ingresa tu contraseña"
+                className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
+              >
+                {showPassword ? <AiFillEye /> : <AiOutlineEye />}{" "}
+                {/* Ojo abierto o cerrado */}
+              </button>
+            </div>
           </div>
 
           <button
@@ -51,36 +71,31 @@ export default function Login() {
           <span className="text-sm text-gray-600">
             ¿No tienes cuenta?{" "}
             <a href="/signup" className="text-blue-500 hover:underline">
-              Registrate
+              Regístrate
             </a>
           </span>
         </div>
 
-        <div className="mt-6 space-y-3">
+        {/* Línea divisoria */}
+        <div className="flex items-center my-6">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="mx-4 text-gray-500 text-sm">O continúa con</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+        {/* Botones de redes sociales */}
+        <div className="space-y-3">
           <button className="flex items-center justify-center w-full py-2 px-4 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition duration-300">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Google_2015_logo.svg"
-              alt="Google"
-              className="w-5 h-5 mr-3"
-            />
+            <FcGoogle className="w-5 h-5 mr-3" />
             Continuar con Google
           </button>
-
+          {/* Botón de Facebook */}
           <button className="flex items-center justify-center w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Logos_of_Facebook.svg"
-              alt="Facebook"
-              className="w-5 h-5 mr-3"
-            />
+            <FaFacebook className="w-5 h-5 mr-3" />
             Continuar con Facebook
           </button>
-
+          {/* Botón de Microsoft */}
           <button className="flex items-center justify-center w-full py-2 px-4 bg-sky-600 text-white font-semibold rounded-md hover:bg-sky-700 transition duration-300">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Microsoft_logo_2020.svg"
-              alt="Microsoft"
-              className="w-5 h-5 mr-3"
-            />
+            <FaMicrosoft className="w-5 h-5 mr-3" />
             Continuar con Microsoft
           </button>
         </div>
