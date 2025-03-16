@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Aboutus() {
   return (
-    <div className="mt-36">
+    <div className="mt-36 p-10" id="about">
       {/* Título con margen superior */}
       <h2 className="font-semibold text-2xl mb-10 font-display text-center text-gris-oscuro mt-10">
         Sobre Nosotros

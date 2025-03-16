@@ -29,8 +29,8 @@ export default function RootLayout({
         </footer>
 
         {/* Logo fijo en la esquina inferior derecha */}
-        <div className="fixed bottom-4 right-4 z-50 bg-black rounded-full">
-          <Image src={bs} alt="Logo" width={60} height={50} />
+        <div className="fixed bottom-8 right-4 z-50 bg-black/60 rounded-full">
+          <Image src={bs} alt="Logo" width={40} height={40} />
         </div>
       </body>
     </html>

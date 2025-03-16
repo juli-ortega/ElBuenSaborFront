@@ -25,8 +25,8 @@ const social = [
 ]
 
   return (
-    <div className="max-w-7xl mx-auto mt-36 p-6">
-    <div className=" bg-white shadow-2xl w-full rounded-lg py-6 px-10 grid grid-cols-3 justify-between">
+    <div className="max-w-7xl mx-auto mt-36 p-20" id="contact">
+    <div className=" bg-white shadow-2xl w-full rounded-lg py-10 px-10 grid grid-cols-3 justify-between">
             <div className="flex flex-col gap-4">
             {social.map((social , index)=> (
                     <div className="flex gap-4 items-center cursor-pointer" key={index}>

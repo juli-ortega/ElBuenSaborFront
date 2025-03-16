@@ -16,7 +16,7 @@ export default function Banner() {
             className="absolute bottom-[-70px] right-[100px]"
           />
         </h1>
-        <button className="font-display px-6 py-4 w-70 text-white cursor-pointer text-[12px] bg-terciario rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
+        <button className="font-display px-6 py-4 w-70 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
           Catálogo
         </button>
       </div>
