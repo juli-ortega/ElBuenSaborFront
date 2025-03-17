@@ -4,17 +4,14 @@ import React from 'react'
 export default function Operation() {
   const info = [
     {
-      image: "/2.svg",
       title: "Elige tu comida",
       description: "Explora nuestro menú y selecciona tus platos favoritos."
     },
     {
-      image: "/1.svg",
       title: "Realiza tu pedido",
       description: "Confirma tu pedido y elige la mejor opción de pago."
     },
     {
-      image: "/3.svg",
       title: "Recibe tu comida",
       description: "Disfruta tu pedido en la comodidad de tu hogar."
     }

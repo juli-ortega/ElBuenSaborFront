@@ -32,7 +32,7 @@ const social = [
                     <div className="flex gap-4 items-center cursor-pointer" key={index}>
                         <Image
                         src={social.icon} 
-                        alt="Imagen del banner"
+                        alt="red social"
                         width={34}
                         height={34}
                     />
@@ -44,13 +44,13 @@ const social = [
             <div className="flex">
             <Image
             src={"/ice3.png"} 
-            alt="Imagen del banner"
+            alt="Imagen1"
             width={300}
             height={34}
             />
                 <Image
             src={"/coffe.png"} 
-            alt="Imagen del banner"
+            alt="Imagen2"
             width={400}
             height={34}
             />

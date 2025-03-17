@@ -10,7 +10,7 @@ export default function Banner() {
           Ordena Desde La Comodidad De Casa
           <Image
             src="/arrow-19.svg"
-            alt="usuario"
+            alt="flecha"
             width={100}
             height={40}
             className="absolute bottom-[-70px] right-[100px]"
