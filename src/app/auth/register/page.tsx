@@ -1,10 +1,11 @@
-"use client"; // Añadir esta directiva al inicio del archivo
+"use client";
 
 import "../../../styles/globals.css";
+import { useState } from "react";
+//Iconos :3
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaMicrosoft } from "react-icons/fa6";
-import { useState } from "react";
-import { AiOutlineEye, AiFillEye } from "react-icons/ai"; // Importar íconos
+import { AiOutlineEye, AiFillEye } from "react-icons/ai";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,9 +1,10 @@
 "use client";
 
 import "../../../styles/globals.css";
+import { useState } from "react";
+//Iconos :3
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaMicrosoft } from "react-icons/fa6";
-import { useState } from "react";
 import { AiOutlineEye, AiFillEye } from "react-icons/ai";
 
 export default function Login() {
