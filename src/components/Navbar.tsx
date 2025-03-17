@@ -101,7 +101,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="space-x-6">
-            <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-terciario rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
+            <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
               Registrate
             </button>
             <button className="font-display uppercase cursor-pointer text-[14px] hover:bg-gris-claro py-3 px-4 rounded-[10px]">
