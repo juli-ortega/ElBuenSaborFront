@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
 export default function Navbar() {
-  const [userAuth, setUserAuth] = useState<boolean>(false);
+  const [userAuth, setUserAuth] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +40,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-bg-light">
+    <nav className="bg-bg-light">
       <div className="flex justify-between items-center w-full max-w-8xl mx-auto px-4">
       <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         {userAuth ? (
@@ -69,7 +69,7 @@ export default function Navbar() {
 
               {/* Menú desplegable */}
               {open && (
-                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gris rounded-lg shadow-lg">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-black border border-gris rounded-lg shadow-lg z-10">
                   <ul className="text-gray-700">
                     {dropdown.map((drop , index) => (
                         <div className="flex px-4 space-x-1 hover:bg-gray-100  py-2  cursor-pointer" key={index}>
@@ -101,15 +101,15 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="space-x-6">
-            <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-terciario rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
+            <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
               Registrate
             </button>
-            <button className="font-display uppercase cursor-pointer text-[14px]">
+            <button className="font-display uppercase cursor-pointer text-[14px] hover:bg-gris-claro py-3 px-4 rounded-[10px]">
               Ingresar
             </button>
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 }
