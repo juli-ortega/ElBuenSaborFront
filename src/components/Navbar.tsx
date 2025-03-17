@@ -40,7 +40,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-bg-light">
+    <nav className="bg-bg-light">
       <div className="flex justify-between items-center w-full max-w-8xl mx-auto px-4">
       <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         {userAuth ? (
@@ -69,7 +69,7 @@ export default function Navbar() {
 
               {/* Menú desplegable */}
               {open && (
-                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gris rounded-lg shadow-lg z-10">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-black border border-gris rounded-lg shadow-lg z-10">
                   <ul className="text-gray-700">
                     {dropdown.map((drop , index) => (
                         <div className="flex px-4 space-x-1 hover:bg-gray-100  py-2  cursor-pointer" key={index}>
@@ -110,6 +110,6 @@ export default function Navbar() {
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 }
