@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 export default function Navbar() {
@@ -43,6 +44,11 @@ export default function Navbar() {
     <nav className="bg-bg-light">
       <div className="flex justify-between items-center w-full max-w-8xl mx-auto px-4">
       <Image src="/logo3.svg" alt="logo" width={180} height={1} />
+      <Link href="/order">
+        <div> 
+          <h2>Productos</h2>
+        </div>
+      </Link>
         {userAuth ? (
           <div className="space-x-10 flex items-center">
             {/* Contenedor del dropdown */}
