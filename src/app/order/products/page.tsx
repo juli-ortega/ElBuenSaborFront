@@ -29,6 +29,7 @@ const ProductoDetailPage = () => {
   }, [id]);
 
   if (!producto) {
+
     return <p>Espera ahi vienen los productos...</p>; // Display a loading message until data is fetched
 
   }
