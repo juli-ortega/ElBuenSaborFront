@@ -21,12 +21,14 @@ export default function Footer() {
     return (
         <div className="bg-principal mt-20 py-12">
             <div className="max-w-8xl mx-auto grid grid-cols-2 justify-between items-center">
-                <Image 
-                    src="/logowhite.svg" 
-                    alt="logo" 
-                    width={300} 
-                    height={1} 
-                />
+                <Link href={"/"}>
+                    <Image 
+                        src="/logowhite.svg" 
+                        alt="logo" 
+                        width={300} 
+                        height={1} 
+                    />
+                </Link>
                 <ul className="flex gap-28">
                     {links.map((link, index) => (
                         <li key={index} className="hover:border-b border-white cursor-pointer">

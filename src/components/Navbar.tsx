@@ -47,6 +47,8 @@ export default function Navbar() {
           <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         </Link>
       <Link href="/order">
+      <Image src="/logo3.svg" alt="logo" width={180} height={1} />
+      <Link href="/product">
         <div> 
           <h2 className="font-display">Productos</h2>
         </div>
@@ -77,7 +79,7 @@ export default function Navbar() {
 
               {/* Menú desplegable */}
               {open && (
-                <div className="absolute top-full right-0 mt-2 w-48 bg-black border border-gris rounded-lg shadow-lg z-10">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gris rounded-lg shadow-lg z-10">
                   <ul className="text-gray-700">
                     {dropdown.map((drop , index) => (
                         <div className="flex px-4 space-x-1 hover:bg-gray-100  py-2  cursor-pointer" key={index}>
