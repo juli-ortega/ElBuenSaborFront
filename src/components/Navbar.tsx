@@ -43,12 +43,17 @@ export default function Navbar() {
   return (
     <nav className="bg-bg-light">
       <div className="flex justify-between items-center w-full max-w-8xl mx-auto px-4">
+<<<<<<< HEAD
         <Link href={"/"}>
           <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         </Link>
       <Link href="/order">
+=======
+      <Image src="/logo3.svg" alt="logo" width={180} height={1} />
+      <Link href="/product">
+>>>>>>> 82f053d071c92648d271a8de7d92abb56f6c3911
         <div> 
-          <h2>Productos</h2>
+          <h2 className="font-display">Productos</h2>
         </div>
       </Link>
         {userAuth ? (
@@ -88,7 +93,13 @@ export default function Navbar() {
                         height={18}
                         />
                         <li className="font-display text-gris-oscuro text-[14px]">
-                          {drop.name}
+                          {drop.name === "Mis Órdenes" ? (
+                            <Link href="/order">
+                              {drop.name}
+                            </Link>
+                          ) : (
+                            drop.name
+                          )}
                         </li>
                       </div>
                     ))}
@@ -109,12 +120,16 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="space-x-6">
-            <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
-              Registrate
-            </button>
-            <button className="font-display uppercase cursor-pointer text-[14px] hover:bg-gris-claro py-3 px-4 rounded-[10px]">
-              Ingresar
-            </button>
+            <Link href={"/auth/resgister/"}>
+              <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
+                Registrate
+              </button>
+            </Link>
+            <Link  href={"/auth/login/"}>
+              <button className="font-display uppercase cursor-pointer text-[14px] hover:bg-gris-claro py-3 px-4 rounded-[10px]">
+                Ingresar
+              </button>
+            </Link>
           </div>
         )}
       </div>
