@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Banner() {
@@ -6,7 +7,7 @@ export default function Banner() {
     <div className="max-w-7xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 items-center px-6">
       {/* Sección Izquierda */}
       <div className="relative space-y-6">
-        <h1 className="text-5xl md:text-7xl max-w-[500px] font-display font-semibold relative">
+        <h1 className="text-5xl md:text-7xl max-w-[500px] font-display font-bold relative">
           Ordena Desde La Comodidad De Casa
           <Image
             src="/arrow-19.svg"
@@ -16,9 +17,13 @@ export default function Banner() {
             className="absolute bottom-[-70px] right-[100px]"
           />
         </h1>
-        <button className="font-display px-6 py-4 w-70 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
+        <Link href={"/catalog"}>
+          <button className="font-display px-6 py-4 w-70 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
           Catálogo
-        </button>
+          </button>
+        </Link>
+      
+        
       </div>
 
       {/* Sección Derecha - Imagen del Banner */}
@@ -30,7 +35,7 @@ export default function Banner() {
             fill
             className="object-cover rounded-lg"
           />
-          <div className="absolute inset-0 bg-terciario/12 rounded-lg"></div>
+          <div className="absolute inset-0 bg-black/12 rounded-lg"></div>
         </div> 
       </div>
     </div>
