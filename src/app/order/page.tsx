@@ -1,64 +1,42 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-interface Producto {
-  id: string;
-  nombre: string;
-  precio: number;
-  imagen: string;
-}
-
-type Categoria = {
-  id: string;
-  nombre: string;
-  productos: Producto[];
-}
-
-const OrderPage = () => {
-    const [categorias, setCategorias] = useState<Categoria[]>([]);
-  
-    useEffect(() => {
-      // Simulación de una llamada fetch a la API
-      const fetchCategorias = async () => {
-        // Aquí puedes poner la URL de tu backend
-        const res = await fetch("http://localhost:8000/api/categorias");
-        const data: Categoria[] = await res.json();
-        setCategorias(data);
-      };
-  
-      fetchCategorias();
-    }, []);
+export default function Order() {
+  const [tab, setTab] = useState("pendientes");
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Productos</h1>
-      {categorias.map((categoria) => (
-        <div key={categoria.id} className="mb-6">
-          <h2 className="text-xl font-semibold">{categoria.nombre}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-            {categoria.productos.map((producto) => (
-              <div key={producto.id} className="border p-4 rounded-lg shadow">
-                <img
-                  src={producto.imagen}
-                  alt={producto.nombre}
-                  className="w-full h-40 object-cover mb-2"
-                />
-                <h3 className="font-bold">{producto.nombre}</h3>
-                <p className="text-gray-700">${producto.precio}</p>
-                <Link href={`/producto/${producto.id}`}>
-                  <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
-                    Ver Detalles
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+      <h1 className="text-2xl font-bold mb-4">Mis Órdenes</h1>
+
+      {/* Navegación de pestañas */}
+      <div className="flex space-x-4 border-b mb-4">
+        <button
+          className={`pb-2 px-4 ${tab === "pendientes" ? "border-b-2 border-blue-500 text-blue-500" : ""}`}
+          onClick={() => setTab("pendientes")}
+        >
+          Pendientes
+        </button>
+        <button
+          className={`pb-2 px-4 ${tab === "completadas" ? "border-b-2 border-green-500 text-green-500" : ""}`}
+          onClick={() => setTab("completadas")}
+        >
+          Completadas
+        </button>
+        <button
+          className={`pb-2 px-4 ${tab === "canceladas" ? "border-b-2 border-red-500 text-red-500" : ""}`}
+          onClick={() => setTab("canceladas")}
+        >
+          Canceladas
+        </button>
+      </div>
+
+      {/* Contenido de cada pestaña */}
+      <div>
+        {tab === "pendientes" && <p>Mostrando órdenes pendientes...</p>}
+        {tab === "completadas" && <p>Mostrando órdenes completadas...</p>}
+        {tab === "canceladas" && <p>Mostrando órdenes canceladas...</p>}  
+      </div>
     </div>
   );
-};
-
-export default OrderPage;
+}
