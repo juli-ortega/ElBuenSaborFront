@@ -43,15 +43,12 @@ export default function Navbar() {
   return (
     <nav className="bg-bg-light">
       <div className="flex justify-between items-center w-full max-w-8xl mx-auto px-4">
-<<<<<<< HEAD
         <Link href={"/"}>
           <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         </Link>
       <Link href="/order">
-=======
       <Image src="/logo3.svg" alt="logo" width={180} height={1} />
       <Link href="/product">
->>>>>>> 82f053d071c92648d271a8de7d92abb56f6c3911
         <div> 
           <h2 className="font-display">Productos</h2>
         </div>
