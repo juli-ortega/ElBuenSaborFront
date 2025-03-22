@@ -10,22 +10,31 @@ export default function Navbar() {
 
   const dropdown = [
     {
-      "name" : "Mis Direcciones",
-      "icon" : "/location.svg"
+      "name": "Mis Direcciones",
+      "icon": "/location.svg",
+      "href": "/directions"  
     },
     {
-      "name" : "Mis Órdenes",
-      "icon" : "/order.svg"
+      "name": "Mis Órdenes",
+      "icon": "/order.svg",
+      "href": "/orders"  
     },
     {
-      "name" : "Mi Perfil",
-      "icon" : "/profile.svg"
+      "name": "Mi Perfil",
+      "icon": "/profile.svg",
+      "href": "/api/auth/me"  
     },
     {
-      "name" : "Cerrar Sesión",
-      "icon" : "/logout.svg"
+      "name": "Cerrar Sesión",
+      "icon": "/logout.svg",
+      "href": "/api/auth/logout"   
+    },
+    {
+      "name": "Iniciar Sesion",
+      "icon": "/login.svg",
+      "href": "/api/auth/login"  
     }
-  ]
+  ];
 
   // Cierra el menú si se hace clic fuera
   useEffect(() => {
@@ -46,13 +55,17 @@ export default function Navbar() {
         <Link href={"/"}>
           <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         </Link>
-      <Link href="/order">
-      <Image src="/logo3.svg" alt="logo" width={180} height={1} />
-      <Link href="/product">
-        <div> 
-          <h2 className="font-display">Productos</h2>
-        </div>
-      </Link>
+        <Link href="/order">
+          <div>
+            <h2 className="font-display">Ordenes</h2>
+          </div>
+        </Link>
+
+        <Link href="/product">
+          <div>
+            <h2 className="font-display">Productos</h2>
+          </div>
+        </Link>
         {userAuth ? (
           <div className="space-x-10 flex items-center">
             {/* Contenedor del dropdown */}
@@ -61,11 +74,11 @@ export default function Navbar() {
                 className="flex items-center space-x-3 border-x border-gris px-2 cursor-pointer py-2"
                 onClick={() => setOpen(!open)}
               >
-                <Image 
-                src="/user.svg" 
-                alt="usuario" 
-                width={24} 
-                height={24} />
+                <Image
+                  src="/user.svg"
+                  alt="usuario"
+                  width={24}
+                  height={24} />
                 <div className="flex items-center space-x-1">
                   <p className="font-display">Nombre Apellido</p>
                   <Image
@@ -81,26 +94,21 @@ export default function Navbar() {
               {open && (
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gris rounded-lg shadow-lg z-10">
                   <ul className="text-gray-700">
-                    {dropdown.map((drop , index) => (
-                        <div className="flex px-4 space-x-1 hover:bg-gray-100  py-2  cursor-pointer" key={index}>
+                    {dropdown.map((drop, index) => (
+                      <div className="flex px-4 space-x-1 hover:bg-gray-100  py-2  cursor-pointer" key={index}>
                         <Image
-                        src={drop.icon}
-                        alt="desplegable"
-                        width={18}
-                        height={18}
+                          src={drop.icon}
+                          alt="desplegable"
+                          width={18}
+                          height={18}
                         />
                         <li className="font-display text-gris-oscuro text-[14px]">
-                          {drop.name === "Mis Órdenes" ? (
-                            <Link href="/order">
-                              {drop.name}
-                            </Link>
-                          ) : (
-                            drop.name
-                          )}
+                          <Link href={drop.href}> {/* Se agrega el href aquí */}
+                            {drop.name}
+                          </Link>
                         </li>
                       </div>
                     ))}
-                 
                   </ul>
                 </div>
               )}
@@ -117,12 +125,12 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="space-x-6">
-            <Link href={"/auth/resgister/"}>
+            <Link href={"/auth/register/"}> {/* Corregido el href para registro */}
               <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
                 Registrate
               </button>
             </Link>
-            <Link  href={"/auth/login/"}>
+            <Link href={"/auth/login/"}> {/* Corregido el href para login */}
               <button className="font-display uppercase cursor-pointer text-[14px] hover:bg-gris-claro py-3 px-4 rounded-[10px]">
                 Ingresar
               </button>
