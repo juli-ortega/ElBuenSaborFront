@@ -6,6 +6,7 @@ import Image from "next/image";
 import bs from "./../../public/bs3.svg"
 import Link from "next/link";
 import { StoreProvider } from "@/store/StoreProvider";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata: Metadata = {
   title: "El Buen Sabor",
@@ -20,25 +21,29 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body>
-          <header>
-            <Navbar />
-          </header>
+        <UserProvider>
 
-          <main className="min-h-screen">{children}</main>
+          <body>
+            <header>
+              <Navbar />
+            </header>
 
-          <footer>
-            <Footer />
-          </footer>
+            <main className="min-h-screen">{children}</main>
 
-          <Link href={"/"}>
-          {/* Logo fijo en la esquina inferior derecha */}
-          <div className="fixed bottom-8 right-4 z-50 bg-black/60 rounded-full">
-            <Image src={bs} alt="Logo" width={40} height={40} />
-          </div>
-          </Link>
+            <footer>
+              <Footer />
+            </footer>
 
-        </body>
+            <Link href={"/"}>
+              {/* Logo fijo en la esquina inferior derecha */}
+              <div className="fixed bottom-8 right-4 z-50 bg-black/60 rounded-full">
+                <Image src={bs} alt="Logo" width={40} height={40} />
+              </div>
+            </Link>
+
+          </body>
+        </UserProvider>
+
       </html>
     </StoreProvider>
   );
