@@ -2,38 +2,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function Navbar() {
-  const [userAuth, setUserAuth] = useState<boolean>(true);
+  const { user, error, isLoading } = useUser();
   const [open, setOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const dropdown = [
-    {
-      "name": "Mis Direcciones",
-      "icon": "/location.svg",
-      "href": "/directions"  
-    },
-    {
-      "name": "Mis Órdenes",
-      "icon": "/order.svg",
-      "href": "/orders"  
-    },
-    {
-      "name": "Mi Perfil",
-      "icon": "/profile.svg",
-      "href": "/api/auth/me"  
-    },
-    {
-      "name": "Cerrar Sesión",
-      "icon": "/logout.svg",
-      "href": "/api/auth/logout"   
-    },
-    {
-      "name": "Iniciar Sesion",
-      "icon": "/login.svg",
-      "href": "/api/auth/login"  
-    }
+    { name: "Mis Direcciones", icon: "/location.svg", href: "/directions" },
+    { name: "Mis Órdenes", icon: "/order.svg", href: "/orders" },
+    { name: "Mi Perfil", icon: "/profile.svg", href: "/profile" },
+    { name: "Cerrar Sesión", icon: "/logout.svg", href: "/api/auth/logout" },
+    { name: "Iniciar Sesion", icon: "/login.svg", href: "/api/auth/login" }
   ];
 
   // Cierra el menú si se hace clic fuera
@@ -49,24 +30,26 @@ export default function Navbar() {
     };
   }, []);
 
+  // Si está cargando o hay un error, lo mostramos
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
   return (
     <nav className="bg-bg-light">
       <div className="flex justify-between items-center w-full max-w-8xl mx-auto px-4">
         <Link href={"/"}>
           <Image src="/logo3.svg" alt="logo" width={180} height={1} />
         </Link>
+
         <Link href="/order">
-          <div>
-            <h2 className="font-display">Ordenes</h2>
-          </div>
+          <h2 className="font-display">Ordenes</h2>
         </Link>
 
         <Link href="/product">
-          <div>
-            <h2 className="font-display">Productos</h2>
-          </div>
+          <h2 className="font-display">Productos</h2>
         </Link>
-        {userAuth ? (
+
+        {user ? (
           <div className="space-x-10 flex items-center">
             {/* Contenedor del dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -74,19 +57,10 @@ export default function Navbar() {
                 className="flex items-center space-x-3 border-x border-gris px-2 cursor-pointer py-2"
                 onClick={() => setOpen(!open)}
               >
-                <Image
-                  src="/user.svg"
-                  alt="usuario"
-                  width={24}
-                  height={24} />
+                <Image src="/user.svg" alt="usuario" width={24} height={24} />
                 <div className="flex items-center space-x-1">
-                  <p className="font-display">Nombre Apellido</p>
-                  <Image
-                    src="/arrow.svg"
-                    alt="desplegable"
-                    width={18}
-                    height={18}
-                  />
+                  <p className="font-display">{user.name}</p>
+                  <Image src="/arrow.svg" alt="desplegable" width={18} height={18} />
                 </div>
               </div>
 
@@ -95,17 +69,13 @@ export default function Navbar() {
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gris rounded-lg shadow-lg z-10">
                   <ul className="text-gray-700">
                     {dropdown.map((drop, index) => (
-                      <div className="flex px-4 space-x-1 hover:bg-gray-100  py-2  cursor-pointer" key={index}>
-                        <Image
-                          src={drop.icon}
-                          alt="desplegable"
-                          width={18}
-                          height={18}
-                        />
+                      <div
+                        className="flex px-4 space-x-1 hover:bg-gray-100 py-2 cursor-pointer"
+                        key={index}
+                      >
+                        <Image src={drop.icon} alt="desplegable" width={18} height={18} />
                         <li className="font-display text-gris-oscuro text-[14px]">
-                          <Link href={drop.href}> {/* Se agrega el href aquí */}
-                            {drop.name}
-                          </Link>
+                          <Link href={drop.href}>{drop.name}</Link>
                         </li>
                       </div>
                     ))}
@@ -115,22 +85,16 @@ export default function Navbar() {
             </div>
 
             {/* Icono del carrito */}
-            <Image
-              src="/shop.svg"
-              alt="Carrito"
-              width={26}
-              height={26}
-              className="cursor-pointer"
-            />
+            <Image src="/shop.svg" alt="Carrito" width={26} height={26} className="cursor-pointer" />
           </div>
         ) : (
           <div className="space-x-6">
-            <Link href={"/auth/register/"}> {/* Corregido el href para registro */}
+            <Link href={"/auth/register/"}>
               <button className="font-display px-4 py-3 text-white cursor-pointer text-[12px] bg-principal rounded-[10px] font-semibold uppercase tracking-widest hover:text-white hover:bg-secundario">
                 Registrate
               </button>
             </Link>
-            <Link href={"/auth/login/"}> {/* Corregido el href para login */}
+            <Link href={"/auth/login/"}>
               <button className="font-display uppercase cursor-pointer text-[14px] hover:bg-gris-claro py-3 px-4 rounded-[10px]">
                 Ingresar
               </button>
